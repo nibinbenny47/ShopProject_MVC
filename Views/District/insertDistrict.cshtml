@@ -1,0 +1,34 @@
+﻿
+@{
+    ViewBag.Title = "insertDistrict";
+}
+@model ShopProject_MVC.Models.Admin.District
+@using (Html.BeginForm())
+{
+
+    <!DOCTYPE html>
+
+    <html>
+    <head>
+        <meta name="viewport" content="width=device-width" />
+        <title>fillDropDownState</title>
+    </head>
+    <body>
+        <div>
+            <table>
+               
+                <tr>
+                    <td>
+                        @Html.TextBoxFor(model => model.disṭrict_name)
+                    </td>
+                </tr>
+                <tr>
+                    <td><input type="submit" value="submit" /></td>
+                </tr>
+            </table>
+        </div>
+    </body>
+</html>
+<h2>insertDistrict</h2>
+}
+
