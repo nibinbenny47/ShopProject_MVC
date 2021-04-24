@@ -18,6 +18,7 @@ namespace ShopProject_MVC.Controllers.Admin
         {
             return View();
         }
+        //-------insert tbl_district--------
         public ActionResult insertDistrict()
         {
             District obj = new District();
