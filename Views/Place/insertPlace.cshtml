@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewBag.Title = "insertPlace";
+}
+@model ShopProject_MVC.Models.Admin.Place
+@using (Html.BeginForm())
+{
+    <!DOCTYPE html>
+
+    <html>
+    <head>
+        <meta name="viewport" content="width=device-width" />
+        <title>fillDropDownState</title>
+    </head>
+    <body>
+        <div>
+            <table>
+                <tr>
+                    <td>
+                        State name
+                    </td>
+                    <td>
+                        @Html.DropDownListFor(model => model.district_id, new SelectList(Model.districtList, "Value", "Text"), "-----select------")
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.EditorFor(model => model.place_name)
+                    </td>
+                </tr>
+                <tr>
+                    <td><input type="submit" value="submit" /></td>
+                </tr>
+            </table>
+        </div>
+    </body>
+</html>
+}
+
+<h2>insertPlace</h2>
+

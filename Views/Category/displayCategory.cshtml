@@ -1,0 +1,35 @@
+﻿@model IEnumerable<ShopProject_MVC.Models.Admin.Category>
+
+@{
+    ViewBag.Title = "displayCategory";
+}
+
+<h2>displayCategory</h2>
+
+<p>
+    @Html.ActionLink("Create New", "insertCategory")
+</p>
+<table class="table">
+    <tr>
+        
+        <th>
+            Category
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        
+        <td>
+            @Html.DisplayFor(modelItem => item.category_name)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "updateCategory", new { id = item.category_id }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "deleteCategory", new {  id=item.category_id })
+        </td>
+    </tr>
+}
+
+</table>
