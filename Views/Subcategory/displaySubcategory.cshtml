@@ -1,0 +1,42 @@
+﻿@model IEnumerable<ShopProject_MVC.Models.Admin.Subcategory>
+
+@{
+    ViewBag.Title = "displaySubcategory";
+}
+
+<h2>displaySubcategory</h2>
+
+<p>
+    @Html.ActionLink("Create New", "insertSubcategory")
+</p>
+<table class="table">
+    <tr>
+       
+        <th>
+            Subcategory Name
+        </th>
+        <th>
+            Category name
+        </th>
+        <th>Actions</th>
+       
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+       
+        <td>
+            @Html.DisplayFor(modelItem => item.subcategory_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.category_id)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "updateSubcategory", new { id = item.subcategory_id }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "deleteSubcategory", new {  id=item.subcategory_id  })
+        </td>
+    </tr>
+}
+
+</table>

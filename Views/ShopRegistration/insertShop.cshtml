@@ -1,0 +1,168 @@
+﻿
+@{
+    ViewBag.Title = "insertShop";
+}
+@model ShopProject_MVC.Models.Guest.ShopRegistration
+@using (Html.BeginForm("insertShop", "ShopRegistration", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+
+<table>
+    <tr>
+        <td>
+            District
+            @Html.DropDownListFor(model => model.ddlDistrict, new SelectList(Model.districtList, "Value", "Text"), "--Select--", new { @onchange = "javascript:fillPlace(this.value);" })
+
+            <script src="~/js/jQuery.js"></script>
+
+            <script language="javascript" type="text/javascript">
+                function fillPlace(val) {
+                    debugger
+                    var procemessage = "<option value='0'> Please wait...</option>";
+                    $("#ddlPlace").html(procemessage).show();
+                    //------Place is controller and displayddlPlace is ActionMethod---------
+                    var url = "/ShopRegistration/displayddlPlace/";
+                    $.ajax({
+                        url: url,
+                        data: { id: val },
+                        cache: false,
+                        type: "POST",
+                        success: function (data) {
+                            var markup = "<option value='0'>Select</option>";
+                            for (var x = 0; x < data.length; x++) {
+                                markup += "<option value=" + data[x].Value + ">" + data[x].Text + "</option>";
+                            }
+                            $("#ddlPlace").html(markup).show();
+                        },
+                        error: function (reponse) {
+                            alert("error : " + reponse);
+                        }
+                    });
+                }
+            </script>
+        </td>
+        <td>
+            Place
+        </td>
+
+        <td>
+
+            <select id="ddlPlace" name="ddlPlace" style="width: 200px"></select>
+        </td>
+    </tr>
+    <tr>
+        <td>Name</td>
+        <td>
+            @Html.TextBoxFor(model => model.shop_name)
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Category
+            @Html.DropDownListFor(n => n.ddlCategory, new SelectList(Model.categoryList, "Value", "Text"), "--Select--", new { @onchange = "javascript:fillSubcategory(this.value);" })
+
+            <script src="~/js/jQuery.js"></script>
+
+            <script language="javascript" type="text/javascript">
+                function fillSubcategory(val) {
+                    debugger
+                    var procemessage = "<option value='0'> Please wait...</option>";
+                    $("#ddlSubcategory").html(procemessage).show();
+                    //------Place is controller and displayddlPlace is ActionMethod---------
+                    var url = "/ShopRegistration/displayddlSubcategory/";
+                    $.ajax({
+                        url: url,
+                        data: { id: val },
+                        cache: false,
+                        type: "POST",
+                        success: function (data) {
+                            var markup = "<option value='0'>Select</option>";
+                            for (var x = 0; x < data.length; x++) {
+                                markup += "<option value=" + data[x].Value + ">" + data[x].Text + "</option>";
+                            }
+                            $("#ddlSubcategory").html(markup).show();
+                        },
+                        error: function (reponse) {
+                            alert("error : " + reponse);
+                        }
+                    });
+                }
+            </script>
+        </td>
+        <td>
+            Subcategory
+        </td>
+
+        <td>
+
+            <select id="ddlSubcategory" name="ddlSubcategory" style="width: 200px"></select>
+        </td>
+    </tr>
+    <tr>
+        <td>Photo</td>
+        <td>
+            @Html.TextBox("file", "", new { type = "file" })
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Address
+        </td>
+        <td>
+            @Html.TextBoxFor(model => model.shop_address)
+        </td>
+
+    </tr>
+    <tr>
+        <td>
+            Email
+        </td>
+        <td>
+            @Html.TextBoxFor(model => model.shop_email)
+        </td>
+
+    </tr>
+    <tr>
+        <td>
+            Contact
+        </td>
+        <td>
+            @Html.TextBoxFor(model => model.shop_contact)
+        </td>
+
+    </tr>
+    <tr>
+        <td>
+            Usernmae
+        </td>
+        <td>
+            @Html.TextBoxFor(model => model.shop_username)
+        </td>
+
+    </tr>
+    <tr>
+        <td>
+            Password
+        </td>
+        <td>
+            @Html.TextBoxFor(model => model.shop_password)
+        </td>
+
+    </tr>
+
+
+
+
+
+
+
+
+    <tr>
+        <td>
+            <input type="submit" value="submit">
+
+        </td>
+    </tr>
+</table>
+}
+<h2>insertShop</h2>
+

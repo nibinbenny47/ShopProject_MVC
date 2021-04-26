@@ -123,6 +123,8 @@
     <Compile Include="Controllers\Admin\CategoryController.cs" />
     <Compile Include="Controllers\Admin\DistrictController.cs" />
     <Compile Include="Controllers\Admin\PlaceController.cs" />
+    <Compile Include="Controllers\Admin\SubcategoryController.cs" />
+    <Compile Include="Controllers\Guest\ShopRegistrationController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -130,6 +132,8 @@
     <Compile Include="Models\Admin\Category.cs" />
     <Compile Include="Models\Admin\District.cs" />
     <Compile Include="Models\Admin\Place.cs" />
+    <Compile Include="Models\Admin\Subcategory.cs" />
+    <Compile Include="Models\Guest\ShopRegistration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -175,9 +179,14 @@
     <Content Include="Views\Category\insertCategory.cshtml" />
     <Content Include="Views\Category\displayCategory.cshtml" />
     <Content Include="Views\Category\updateCategory.cshtml" />
+    <Content Include="Views\Subcategory\insertSubcategory.cshtml" />
+    <Content Include="Views\Subcategory\displaySubcategory.cshtml" />
+    <Content Include="Views\Subcategory\updateSubcategory.cshtml" />
+    <Content Include="Views\ShopRegistration\insertShop.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Photos\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

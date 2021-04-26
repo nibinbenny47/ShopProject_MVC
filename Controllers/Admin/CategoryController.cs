@@ -88,26 +88,9 @@ namespace ShopProject_MVC.Controllers.Admin
             }
             return View(obj);
 
-            //SqlDataAdapter adp = new SqlDataAdapter(selQry, con);
-            //DataTable dt = new DataTable();
-            //adp.Fill(dt);
-            //obj.category_id = Convert.ToInt32(dt.Rows[0]["category_id"]);
-            //obj.category_name = dt.Rows[0]["category_name"].ToString();
-            //return View(obj);
+           
         }
-        //[HttpPost]
-        //public ActionResult updateCategory(int id)
-        //{
-        //    Category obj = new Category();
-
-        //    string upQry = "update tbl_category set category_name='"+obj.category_name+"' where category_id='"+id+"'";
-        //    SqlCommand cmd = new SqlCommand(upQry, con);
-        //    con.Open();
-        //    cmd.ExecuteNonQuery();
-        //    con.Close();
-        //    return View(obj);
-
-        //}
+        
         [HttpPost]
         public ActionResult updateCategory(Category obj, int id)
         {
