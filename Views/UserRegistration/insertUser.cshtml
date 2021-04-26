@@ -1,0 +1,133 @@
+﻿@model ShopProject_MVC.Models.Guest.UserRegistration
+
+@{
+    ViewBag.Title = "insertUser";
+}
+
+<h2>insertUser</h2>
+
+@using (Html.BeginForm("insertUser", "UserRegistration", FormMethod.Post, new { enctype = "multipart/form-data" })) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>UserRegistration</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.user_name, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.user_name, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.user_name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.user_gender, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                male:
+                @Html.RadioButtonFor(model=>model.user_gender,"Male")
+                female:
+                @Html.RadioButtonFor(model=>model.user_gender,"Female")
+                @*@Html.EditorFor(model => model.user_gender, new { htmlAttributes = new { @class = "form-control" } })*@
+                @Html.ValidationMessageFor(model => model.user_gender, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.user_email, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.user_email, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.user_email, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.user_contact, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.user_contact, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.user_contact, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.user_username, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.user_username, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.user_username, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.user_password, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.user_password, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.user_password, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.imagepath, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBox("file","",new {type="file" })
+                @Html.ValidationMessageFor(model => model.imagepath, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ddlDistrict, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.ddlDistrict, new SelectList(Model.districtList, "Value", "Text"), "--Select--", new { @onchange = "javascript:fillPlace(this.value);" })
+                <script src="~/js/jQuery.js"></script>
+
+                <script language="javascript" type="text/javascript">
+                function fillPlace(val) {
+                    debugger
+                    var procemessage = "<option value='0'> Please wait...</option>";
+                    $("#ddlPlace").html(procemessage).show();
+                    //------Place is controller and displayddlPlace is ActionMethod---------
+                    var url = "/UserRegistration/displayddlPlace/";
+                    $.ajax({
+                        url: url,
+                        data: { id: val },
+                        cache: false,
+                        type: "POST",
+                        success: function (data) {
+                            var markup = "<option value='0'>Select</option>";
+                            for (var x = 0; x < data.length; x++) {
+                                markup += "<option value=" + data[x].Value + ">" + data[x].Text + "</option>";
+                            }
+                            $("#ddlPlace").html(markup).show();
+                        },
+                        error: function (reponse) {
+                            alert("error : " + reponse);
+                        }
+                    });
+                }
+                </script>
+                @Html.ValidationMessageFor(model => model.ddlDistrict, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ddlPlace, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <select id="ddlPlace" name="ddlPlace" style="width: 200px"></select>
+
+                @Html.ValidationMessageFor(model => model.ddlPlace, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

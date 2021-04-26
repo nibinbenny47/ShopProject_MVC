@@ -185,11 +185,11 @@
     <Content Include="Views\Subcategory\displaySubcategory.cshtml" />
     <Content Include="Views\Subcategory\updateSubcategory.cshtml" />
     <Content Include="Views\ShopRegistration\insertShop.cshtml" />
+    <Content Include="Views\UserRegistration\insertUser.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Photos\" />
-    <Folder Include="Views\UserRegistration\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Data;
 using System.Data.SqlClient;
+using System.IO;
 using ShopProject_MVC.Models.Guest;
 
 namespace ShopProject_MVC.Controllers.Guest
@@ -23,7 +24,7 @@ namespace ShopProject_MVC.Controllers.Guest
         {
             SqlConnection con = new SqlConnection("Data Source=.;Initial Catalog=db_MVCProject;Integrated Security=True");
 
-            string selQry = "select * from tbl-district";
+            string selQry = "select * from tbl_district";
             SqlDataAdapter adp = new SqlDataAdapter(selQry, con);
             DataTable dt = new DataTable();
             adp.Fill(dt);
@@ -78,6 +79,30 @@ namespace ShopProject_MVC.Controllers.Guest
                 districtList = items,
             };
             return items;
+        }
+        //------insert tbl_user-------------------------------------------------------------
+        public ActionResult insertUser()
+        {
+            UserRegistration obj = new UserRegistration();
+            obj.districtList = filDistrict();
+            return View(obj);
+        }
+        [HttpPost]
+        public ActionResult insertUser(HttpPostedFileBase file,UserRegistration obj)
+        {
+            string filename = Path.GetFileName(file.FileName);
+            obj.imagepath = filename;
+            string path = Path.Combine(Server.MapPath("~/Photos"), filename);
+            file.SaveAs(path);
+            {
+
+                string insQry = "insert into tbl_user(user_name,user_gender,user_email,place_id,user_photo,user_username,user_password,user_contact)values('"+obj.user_name+"','"+obj.user_gender+"','"+obj.user_email+"','"+obj.ddlPlace+"','"+obj.imagepath+"','"+obj.user_username+"','"+obj.user_password+"','"+obj.user_contact+"')";
+                SqlCommand cmd = new SqlCommand(insQry, con);
+                con.Open();
+                cmd.ExecuteNonQuery();
+                con.Close();
+                return View(obj);
+            }
         }
     }
 }
