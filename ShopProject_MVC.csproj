@@ -125,6 +125,7 @@
     <Compile Include="Controllers\Admin\PlaceController.cs" />
     <Compile Include="Controllers\Admin\SubcategoryController.cs" />
     <Compile Include="Controllers\Guest\ShopRegistrationController.cs" />
+    <Compile Include="Controllers\Guest\UserRegistrationController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -134,6 +135,7 @@
     <Compile Include="Models\Admin\Place.cs" />
     <Compile Include="Models\Admin\Subcategory.cs" />
     <Compile Include="Models\Guest\ShopRegistration.cs" />
+    <Compile Include="Models\Guest\UserRegistration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -187,6 +189,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Photos\" />
+    <Folder Include="Views\UserRegistration\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
