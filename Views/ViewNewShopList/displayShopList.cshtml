@@ -1,0 +1,77 @@
+﻿@model IEnumerable<ShopProject_MVC.Models.Admin.ViewNewShopList>
+
+@{
+    ViewBag.Title = "displayShopList";
+}
+
+<h2>displayShopList</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+
+        <th>
+            Name
+        </th>
+        <th>
+            Address
+        </th>
+        <th>
+            Contact
+        </th>
+        <th>
+            Email
+        </th>
+        <th>
+            Photo
+        </th>
+        <th>Place
+        </th>
+        <th>
+            Subcategory
+        </th>
+        <th>
+            
+        </th>
+
+       
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+
+    <td>
+        @Html.DisplayFor(modelItem => item.shop_name)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.shop_address)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.shop_contact)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.shop_email)
+    </td>
+    <td>
+        <img src="~/Photos/@Html.DisplayFor(modelItem=>item.imagepath)" width="100" height="100">
+
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.ddlPlace)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.ddlSubcategory)
+    </td>
+   
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+        @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+        @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+    </td>
+</tr>
+}
+
+</table>
